@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 220 14% 96%;
+
+    --card: 224 71% 7%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 224 71% 7%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 215 20% 25%;
+    --secondary-foreground: 215 20% 75%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20.2% 65%;
+
+    --accent: 215 25% 20%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 72% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 217 91% 60%;
+
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 71% 55%;
+    --chart-3: 38 96% 60%;
+    --chart-4: 270 71% 65%;
+    --chart-5: 336 80% 58%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(224 71% 7%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(215 20% 25%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(215 20% 35%);
+  }
+
+  ::selection {
+    background: hsl(217 91% 60% / 0.3);
+    color: hsl(220 14% 96%);
+  }
+}
+
+@layer components {
+  .hex-cell {
+    @apply inline-block px-1 py-0.5 font-mono text-xs rounded bg-secondary border border-border text-muted-foreground;
+  }
+
+  .hex-cell:hover {
+    @apply border-primary text-foreground;
+  }
+
+  .status-dot {
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+
+  .status-dot.scanning {
+    @apply bg-chart-2 animate-pulse;
+  }
+
+  .status-dot.idle {
+    @apply bg-muted-foreground;
+  }
+
+  .device-card {
+    @apply border border-border rounded-md p-3 bg-card hover:border-primary transition-colors cursor-pointer;
+  }
+
+  .rssi-bar {
+    @apply h-1.5 rounded-full transition-all;
+  }
+
+  .signal-4 { @apply bg-chart-2 w-full; }
+  .signal-3 { @apply bg-chart-1 w-3\/4; }
+  .signal-2 { @apply bg-chart-3 w-1\/2; }
+  .signal-1 { @apply bg-chart-4 w-1\/4; }
+  .signal-0 { @apply bg-destructive w-1\/6; }
+}
